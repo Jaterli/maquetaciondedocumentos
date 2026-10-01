@@ -625,7 +625,7 @@ a {
 
 /* ---------- 5.4 No Editables & OCR ---------- */
 .no-editables {
-  padding: 0 0 6rem;
+  padding: 6rem 0;
 }
 .no-editables__banner {
   background: linear-gradient(135deg, #172033 0%, #0d131f 100%);
@@ -842,12 +842,6 @@ a {
   .hero__badge {
     display: none;
   }
-  .layout-detail {
-    padding: 4rem 0;
-  }
-  .no-editables {
-    padding: 0 0 4rem;
-  }
   .servicio-card,
   .ventaja-card {
     padding: 1.75rem 1.5rem;
@@ -871,6 +865,8 @@ a {
     line-height: 2rem;
   }
   .contacto,
+  .layout-detail,
+  .no-editables,
   .ventajas,
   .servicios,
   .disponibilidad {
