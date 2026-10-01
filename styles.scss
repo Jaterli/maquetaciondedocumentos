@@ -1,0 +1,852 @@
+/* ============================================================
+   styles.scss — Estética Editorial y Maquetación Profesional
+   ============================================================
+   ÍNDICE
+   01. Variables
+   02. Reset & Base
+   03. Utilidades (contenedor, tags, títulos, botones)
+   04. Componentes
+       4.1 Header
+       4.2 Footer
+       4.3 Cards (ventaja, servicio, experience-badge, software-pills)
+   05. Secciones
+       5.1 Hero
+       5.2 Disponibilidad
+       5.3 Layout Detail
+       5.4 No Editables & OCR
+       5.5 Ventajas
+       5.6 Servicios
+       5.7 Contacto
+   06. Responsive (global)
+   ============================================================ */
+
+
+/* ============================================================
+   01. VARIABLES
+   ============================================================ */
+$color-primary:       #0d131f; // Azul noche profundo
+$color-secondary:     #172033; // Azul pizarra sobrio
+$color-accent:        #c89d56; // Dorado champán
+$color-accent-hover:  #b08642;
+$color-accent-light:  #e2c28e; // Dorado claro (sobre fondos oscuros)
+
+$color-bg-light:      #f9fafb;
+$color-bg-warm:       #f4f1ea; // Beige editorial
+$color-bg-dark:       #080c14; // Footer
+
+$color-text-body:     #334155;
+$color-text-muted:    #64748b;
+$color-border:        #e2e8f0;
+
+$color-success:       #22c55e;
+$color-whatsapp:      #25d366;
+$color-whatsapp-hover:#1ebc57;
+
+$font-heading: 'Cormorant Garamond', Georgia, serif;
+$font-body:    'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+
+$max-width:     1180px;
+$radius:        10px;
+$header-height: 84px;
+
+$transition-base: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+
+
+/* ============================================================
+   02. RESET & BASE
+   ============================================================ */
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: calc(#{$header-height} + 20px);
+}
+
+body {
+    font-family: $font-body;
+    font-weight: 400;
+    line-height: 1.7;
+    color: $color-text-body;
+    background-color: #ffffff;
+    -webkit-font-smoothing: antialiased;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+    transition: all 0.25s ease;
+}
+
+
+/* ============================================================
+   03. UTILIDADES
+   ============================================================ */
+.container {
+    max-width: $max-width;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+/* --- Etiquetas y titulares elegantes --- */
+.section__tag {
+    display: inline-block;
+    font-family: $font-body;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: $color-accent;
+    margin-bottom: 0.75rem;
+
+    &--light {
+        color: $color-accent-light;
+    }
+}
+
+.section__title {
+    font-family: $font-heading;
+    font-size: 2.5rem;
+    font-weight: 600;
+    line-height: 1.25;
+    color: $color-primary;
+    margin-bottom: 1rem;
+    text-align: center;
+
+    &--left  { text-align: left; }
+    &--light { color: #ffffff; }
+}
+
+.section__subtitle {
+    font-size: 1.1rem;
+    color: $color-text-muted;
+    text-align: center;
+    max-width: 680px;
+    margin: 0 auto 2.5rem;
+}
+
+.section__header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+/* --- Botones refinados --- */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.85rem 2rem;
+    font-family: $font-body;
+    font-weight: 500;
+    font-size: 0.95rem;
+    letter-spacing: 0.02em;
+    border-radius: 6px;
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: $transition-base;
+
+    &:hover {
+        transform: translateY(-2px);
+    }
+
+    &--primary {
+        background-color: $color-accent;
+        color: #ffffff;
+        box-shadow: 0 4px 14px rgba($color-accent, 0.35);
+
+        &:hover {
+            background-color: $color-accent-hover;
+            box-shadow: 0 6px 20px rgba($color-accent, 0.45);
+        }
+    }
+
+    &--outline {
+        border-color: rgba(255, 255, 255, 0.3);
+        color: #ffffff;
+
+        &:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-color: #ffffff;
+        }
+    }
+
+    &--header {
+        background-color: $color-primary;
+        color: #ffffff;
+        padding: 0.55rem 1.25rem;
+        font-size: 0.85rem;
+
+        &:hover {
+            background-color: $color-accent;
+        }
+    }
+
+    &--whatsapp {
+        background-color: $color-whatsapp;
+        color: #ffffff;
+
+        &:hover {
+            background-color: $color-whatsapp-hover;
+        }
+    }
+
+    &--lg {
+        padding: 1rem 2.5rem;
+        font-size: 1.05rem;
+    }
+
+    &--disponibilidad {
+        background-color: $color-primary;
+        color: #ffffff;
+        padding: 0.85rem 1.75rem;
+        font-size: 0.925rem;
+        white-space: nowrap;
+
+        &:hover {
+            background-color: $color-accent;
+            color: #ffffff;
+        }
+    }
+}
+
+
+/* ============================================================
+   04. COMPONENTES
+   ============================================================ */
+
+/* ---------- 4.1 Header ---------- */
+.header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid $color-border;
+
+    &__inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: $header-height;
+    }
+
+    &__logo {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        font-family: $font-heading;
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: $color-primary;
+    }
+
+    &__logo-text-group {
+        display: flex;
+        flex-direction: column;
+        line-height: 1.1;
+    }
+
+    &__logo-subtitle {
+        font-family: $font-body;
+        font-size: 0.725rem;
+        font-weight: 500;
+        color: $color-accent;
+        letter-spacing: 0.03em;
+        text-transform: uppercase;
+        margin-top: 2px;
+    }
+
+    &__logo-icon {
+        width: 50px;
+        border-radius: 8px;
+        overflow: hidden;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+    }
+
+    &__nav {
+        display: flex;
+        align-items: center;
+        gap: 2rem;
+
+        a:not(.btn) {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: $color-text-body;
+
+            &:hover {
+                color: $color-accent;
+            }
+        }
+    }
+}
+
+/* ---------- 4.2 Footer ---------- */
+.footer {
+    background-color: $color-bg-dark;
+    padding: 2rem 0;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 0.875rem;
+
+    &__inner {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    &__link {
+        color: $color-accent;
+
+        &:hover {
+            color: $color-accent-hover;
+        }
+    }
+
+    a {
+        color: inherit;
+        text-decoration: underline;
+        transition: color 0.2s ease;
+
+        &:hover {
+            color: #ffffff;
+        }
+    }
+}
+
+/* ---------- 4.3 Cards y componentes reutilizables ---------- */
+
+/* Experience badge */
+.experience-badge {
+    text-align: center;
+    padding-bottom: 1.75rem;
+    margin-bottom: 1.75rem;
+    border-bottom: 1px solid rgba($color-accent, 0.2);
+
+    &__number {
+        display: block;
+        font-family: $font-heading;
+        font-size: 4rem;
+        font-weight: 700;
+        color: $color-accent;
+        line-height: 1;
+    }
+
+    &__label {
+        font-size: 0.9rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: $color-primary;
+    }
+}
+
+/* Software pills */
+.software-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    list-style: none;
+
+    li {
+        background: #ffffff;
+        padding: 0.4rem 0.85rem;
+        border-radius: 4px;
+        font-size: 0.85rem;
+        font-weight: 500;
+        color: $color-primary;
+        border: 1px solid rgba(0, 0, 0, 0.06);
+    }
+}
+
+/* Ventaja card */
+.ventaja-card {
+    background: #ffffff;
+    padding: 2.25rem;
+    border-radius: $radius;
+    border: 1px solid $color-border;
+    transition: all 0.3s ease;
+
+    &:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 12px 25px rgba(0, 0, 0, 0.05);
+        border-color: $color-accent;
+    }
+
+    &--wide {
+        grid-column: span 2;
+    }
+
+    &__num {
+        font-family: $font-heading;
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: $color-accent;
+        margin-bottom: 0.5rem;
+    }
+
+    &__title {
+        font-size: 1.2rem;
+        font-weight: 600;
+        color: $color-primary;
+        margin-bottom: 0.5rem;
+    }
+
+    &__text {
+        font-size: 0.95rem;
+        color: $color-text-body;
+    }
+}
+
+/* Servicio card */
+.servicio-card {
+    background: #ffffff;
+    padding: 2.25rem 1.75rem;
+    border-radius: $radius;
+    border: 1px solid $color-border;
+
+    &__icon {
+        font-size: 2.2rem;
+        margin-bottom: 1rem;
+    }
+
+    &__title {
+        font-size: 1.2rem;
+        font-weight: 600;
+        color: $color-primary;
+        margin-bottom: 1rem;
+    }
+
+    &__lista {
+        list-style: none;
+
+        li {
+            font-size: 0.9rem;
+            color: $color-text-body;
+            margin-bottom: 0.6rem;
+            padding-left: 1.2rem;
+            position: relative;
+
+            &::before {
+                content: "•";
+                position: absolute;
+                left: 0;
+                color: $color-accent;
+                font-weight: bold;
+            }
+        }
+    }
+}
+
+
+/* ============================================================
+   05. SECCIONES
+   ============================================================ */
+
+/* ---------- 5.1 Hero ---------- */
+.hero {
+    padding: 5rem 0 5.5rem;
+    background: linear-gradient(135deg, $color-primary 0%, $color-secondary 100%);
+    color: #ffffff;
+    position: relative;
+    overflow: hidden;
+
+    &__inner {
+        display: grid;
+        grid-template-columns: 1.1fr 0.9fr;
+        align-items: center;
+        gap: 3.5rem;
+    }
+
+    &__availability {
+        display: flex;
+        align-items: flex-start;
+        gap: 0.75rem;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba($color-accent, 0.3);
+        padding: 0.85rem 1.15rem;
+        border-radius: 8px;
+        margin-bottom: 2rem;
+    }
+
+    &__badge {
+        display: inline-block;
+        padding: 0.35rem 0.9rem;
+        background: rgba($color-accent, 0.15);
+        border: 1px solid rgba($color-accent, 0.4);
+        color: $color-accent-light;
+        border-radius: 30px;
+        font-size: 0.825rem;
+        font-weight: 500;
+        margin-bottom: 1.5rem;
+    }
+
+    &__title {
+        font-family: $font-heading;
+        font-size: 3.2rem;
+        font-weight: 600;
+        line-height: 1.15;
+        margin-bottom: 1.25rem;
+        letter-spacing: -0.01em;
+    }
+
+    &__subtitle {
+        font-size: 1.1rem;
+        line-height: 1.7;
+        color: rgba(255, 255, 255, 0.85);
+        margin-bottom: 2.25rem;
+    }
+
+    &__actions {
+        display: flex;
+        gap: 1rem;
+        flex-wrap: wrap;
+    }
+
+    &__image-frame {
+        position: relative;
+
+        &::before {
+            content: '';
+            position: absolute;
+            inset: -10px;
+            border: 1px solid rgba($color-accent, 0.3);
+            border-radius: $radius + 4px;
+            pointer-events: none;
+        }
+
+        img {
+            border-radius: $radius;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+            object-fit: cover;
+        }
+    }
+}
+
+/* ---------- 5.2 Disponibilidad ---------- */
+.disponibilidad {
+    padding: 2rem 0;
+    margin-top: -2.5rem;
+    position: relative;
+    z-index: 10;
+
+    &__card {
+        background: #ffffff;
+        border: 1px solid rgba($color-accent, 0.3);
+        border-radius: 12px;
+        padding: 2.25rem 2.5rem;
+        box-shadow: 0 10px 30px rgba($color-primary, 0.08);
+        display: grid;
+        grid-template-columns: 1fr auto;
+        align-items: center;
+        gap: 3rem;
+    }
+
+    &__content {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    &__status {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.6rem;
+        background: $color-bg-warm;
+        padding: 0.4rem 0.9rem;
+        border-radius: 30px;
+        border: 1px solid rgba($color-accent, 0.25);
+        margin-bottom: 1rem;
+    }
+
+    &__dot {
+        width: 9px;
+        height: 9px;
+        background-color: $color-success;
+        border-radius: 50%;
+        box-shadow: 0 0 8px $color-success;
+    }
+
+    &__badge {
+        font-size: 0.75rem;
+        font-weight: 600;
+        color: $color-primary;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        white-space: nowrap;
+    }
+
+    &__title {
+        font-family: $font-heading;
+        font-size: 1.65rem;
+        font-weight: 600;
+        color: $color-primary;
+        margin-bottom: 0.5rem;
+        line-height: 1.25;
+    }
+
+    &__text {
+        font-size: 0.95rem;
+        color: $color-text-body;
+        line-height: 1.55;
+        margin: 0;
+    }
+
+    &__action {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+    }
+}
+
+/* ---------- 5.3 Layout Detail ---------- */
+.layout-detail {
+    padding: 6rem 0;
+
+    &__grid {
+        display: grid;
+        grid-template-columns: 1.2fr 0.8fr;
+        gap: 4rem;
+        align-items: center;
+    }
+
+    .section__lead {
+        font-size: 1.2rem;
+        font-weight: 500;
+        color: $color-primary;
+        line-height: 1.6;
+        margin-bottom: 1.25rem;
+    }
+
+    .section__text {
+        font-size: 1rem;
+        color: $color-text-body;
+        margin-bottom: 1rem;
+    }
+
+    &__card {
+        background: $color-bg-warm;
+        padding: 2.5rem;
+        border-radius: $radius;
+        border: 1px solid rgba($color-accent, 0.25);
+    }
+}
+
+/* ---------- 5.4 No Editables & OCR ---------- */
+.no-editables {
+    padding: 0 0 6rem;
+
+    &__banner {
+        background: linear-gradient(135deg, $color-secondary 0%, $color-primary 100%);
+        border-radius: $radius + 4px;
+        padding: 4rem 3rem;
+        color: #ffffff;
+        box-shadow: 0 15px 35px rgba($color-primary, 0.12);
+    }
+
+    &__subtitle {
+        font-family: $font-heading;
+        font-size: 1.6rem;
+        color: $color-accent-light;
+        margin-bottom: 1.25rem;
+        font-weight: 500;
+    }
+
+    p {
+        font-size: 1.05rem;
+        line-height: 1.75;
+        color: rgba(255, 255, 255, 0.88);
+        max-width: 900px;
+    }
+
+    &__note {
+        margin-top: 2rem;
+        padding: 1.25rem 1.5rem;
+        background: rgba(255, 255, 255, 0.06);
+        border-left: 3px solid $color-accent;
+        border-radius: 0 6px 6px 0;
+        display: flex;
+        gap: 1rem;
+        align-items: flex-start;
+
+        p {
+            font-size: 0.925rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin: 0;
+        }
+    }
+}
+
+/* ---------- 5.5 Ventajas ---------- */
+.ventajas {
+    background-color: $color-bg-light;
+    padding: 6rem 0;
+
+    &__grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+    }
+}
+
+/* ---------- 5.6 Servicios ---------- */
+.servicios {
+    padding: 6rem 0;
+
+    &__grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+    }
+}
+
+/* ---------- 5.7 Contacto ---------- */
+.contacto {
+    background: linear-gradient(135deg, $color-primary 0%, $color-secondary 100%);
+    color: #ffffff;
+    padding: 6rem 0;
+    text-align: center;
+
+    &__cta-box {
+        display: flex;
+        justify-content: center;
+        gap: 1.5rem;
+        margin: 2.5rem 0 3.5rem;
+        flex-wrap: wrap;
+    }
+
+    &__datos {
+        display: flex;
+        justify-content: center;
+        gap: 3rem;
+        flex-wrap: wrap;
+        padding-top: 2rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    &__item {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 0.95rem;
+        color: rgba(255, 255, 255, 0.85);
+
+        a:hover {
+            color: $color-accent;
+        }
+    }
+}
+
+
+/* ============================================================
+   06. RESPONSIVE
+   ============================================================ */
+
+/* --- ≤ 992px --- */
+@media (max-width: 992px) {
+    .hero {
+        padding: 4rem 0 4.5rem;
+
+        &__inner {
+            grid-template-columns: 1fr;
+            gap: 2.5rem;
+        }
+
+        &__title {
+            font-size: 2.5rem;
+        }
+    }
+
+    .layout-detail {
+        &__grid {
+            grid-template-columns: 1fr;
+            gap: 2.5rem;
+        }
+
+        &__card {
+            padding: 1.75rem;
+        }
+    }
+
+    .disponibilidad {
+        margin-top: 0;
+        padding: 3rem 0 1rem;
+
+        &__card {
+            padding: 1.75rem 1.5rem;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+
+        &__badge {
+            font-size: 0.7rem;
+        }
+
+        &__action {
+            justify-content: flex-start;
+        }
+    }
+
+    .ventajas__grid {
+        grid-template-columns: 1fr;
+    }
+
+    .ventaja-card--wide {
+        grid-column: span 1;
+    }
+
+    .servicios__grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* --- ≤ 768px --- */
+@media (max-width: 768px) {
+    .header {
+        &__inner {
+            height: auto;
+            padding: 0.5rem 1.5rem;
+        }
+
+        &__nav {
+            display: none; // Se recomienda menú desplegable en producción
+        }
+    }
+    .layout-detail{
+        padding: 4rem 0;
+    }
+    .no-editables{
+        padding: 0 0 4rem;
+    }
+
+    .servicio-card, .ventaja-card {
+        padding: 1.75rem 1.5rem;
+    }
+    .no-editables__banner {
+        padding: 2.5rem 1.5rem;
+    }
+
+    .no-editables__note {
+        padding: 1rem;
+    }
+
+    .contacto, .ventajas, .servicios, .disponibilidad {
+        padding: 4rem 0;
+    }
+
+    .contacto__datos {
+        flex-direction: column;
+        gap: 1rem;
+    }
+}
