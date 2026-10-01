@@ -71,7 +71,7 @@ body {
     font-weight: 400;
     line-height: 1.7;
     color: $color-text-body;
-    background-color: #ffffff;
+    background-color: #fffef9;
     -webkit-font-smoothing: antialiased;
 }
 
@@ -286,6 +286,49 @@ a {
             }
         }
     }
+
+    /* ---------- Botón hamburguesa ---------- */
+    &__toggle {
+        display: none; // oculto en desktop
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 5px;
+        width: 42px;
+        height: 42px;
+        padding: 0;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        z-index: 1100; // por encima del panel
+        -webkit-tap-highlight-color: transparent;
+
+        &-bar {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background-color: $color-primary;
+            border-radius: 2px;
+            transition: $transition-base;
+            transform-origin: center;
+        }
+
+        /* Estado activo → cruz */
+        &.is-active {
+            .header__toggle-bar:nth-child(1) {
+                transform: translateY(7px) rotate(45deg);
+                background-color: $color-accent;
+            }
+            .header__toggle-bar:nth-child(2) {
+                opacity: 0;
+                transform: scaleX(0);
+            }
+            .header__toggle-bar:nth-child(3) {
+                transform: translateY(-7px) rotate(-45deg);
+                background-color: $color-accent;
+            }
+        }
+    }    
 }
 
 /* ---------- 4.2 Footer ---------- */
@@ -857,11 +900,77 @@ a {
     .header {
         &__inner {
             height: auto;
-            padding: 0.5rem 1.5rem;
+            padding: 0.65rem 1.25rem;
         }
 
+        /* Mostrar hamburguesa */
+        &__toggle {
+            display: flex;
+        }
+
+        /* Panel de navegación a pantalla completa */
         &__nav {
-            display: none; // Se recomienda menú desplegable en producción
+            position: fixed;
+            inset: 0;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 1.75rem;
+            padding: 6rem 2rem 3rem;
+            background: #ffffff;
+            transform: translateY(-100%);
+            opacity: 0;
+            visibility: hidden;
+            z-index: 999; // por debajo del header (1000) y del toggle (1100)
+            transition: 
+                transform 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+                opacity 0.3s ease,
+                visibility 0.3s ease;
+
+            &.is-open {
+                transform: translateY(0);
+                opacity: 1;
+                visibility: visible;
+                height: min-content;
+            }
+
+            /* Enlaces más grandes y táctiles */
+            a:not(.btn) {
+                font-size: 1.2rem;
+                font-weight: 500;
+                color: $color-primary;
+                padding: 0.5rem 1rem;
+                position: relative;
+
+                &::after {
+                    content: '';
+                    position: absolute;
+                    bottom: 4px;
+                    left: 50%;
+                    width: 0;
+                    height: 2px;
+                    background: $color-accent;
+                    transform: translateX(-50%);
+                    transition: width 0.3s ease;
+                }
+
+                &:hover::after,
+                &:focus-visible::after {
+                    width: 40%;
+                }
+            }
+
+            /* Botón CTA dentro del menú */
+            .btn--header {
+                margin-top: 0.5rem;
+                padding: 0.9rem 2.25rem;
+                font-size: 1rem;
+                background-color: $color-accent;
+
+                &:hover {
+                    background-color: $color-accent-hover;
+                }
+            }
         }
     }
 
@@ -869,20 +978,17 @@ a {
         display: none;
     }
 
-    .layout-detail{
-        padding: 4rem 0;
-    }
-    .no-editables{
-        padding: 0 0 4rem;
-    }
+    .layout-detail  { padding: 4rem 0; }
+    .no-editables   { padding: 0 0 4rem; }
 
-    .servicio-card, .ventaja-card {
+    .servicio-card,
+    .ventaja-card {
         padding: 1.75rem 1.5rem;
     }
 
     .servicio-card__title {
         font-size: 1.1rem;
-         line-height: 1.5rem;
+        line-height: 1.5rem;
     }
 
     .section__title {
@@ -903,7 +1009,10 @@ a {
         line-height: 2rem;
     }
 
-    .contacto, .ventajas, .servicios, .disponibilidad {
+    .contacto,
+    .ventajas,
+    .servicios,
+    .disponibilidad {
         padding: 2rem 0;
     }
 

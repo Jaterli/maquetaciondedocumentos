@@ -29,8 +29,18 @@
                 </div>
             </a>
 
+            <!-- Botón hamburguesa (solo móvil) -->
+            <button class="header__toggle" 
+                    aria-label="Abrir menú" 
+                    aria-expanded="false" 
+                    aria-controls="nav-principal">
+                <span class="header__toggle-bar"></span>
+                <span class="header__toggle-bar"></span>
+                <span class="header__toggle-bar"></span>
+            </button>
+
             <!-- Navegación -->
-            <nav class="header__nav" aria-label="Navegación principal">
+            <nav class="header__nav" id="nav-principal" aria-label="Navegación principal">
                 <a href="#perfil">Inicio</a>
                 <a href="#maquetacion">Maquetación</a>
                 <a href="#servicios">Servicios</a>
@@ -40,6 +50,7 @@
             </nav>
 
         </div>
+
     </header>
 
     <!-- ========== HERO ========== -->
@@ -315,5 +326,6 @@
         </div>
     </footer>
 
+    <script src="nav.js" defer></script>
 </body>
 </html>

@@ -42,7 +42,7 @@ body {
   font-weight: 400;
   line-height: 1.7;
   color: #334155;
-  background-color: #ffffff;
+  background-color: #fffef9;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -236,6 +236,48 @@ a {
 }
 .header__nav a:not(.btn):hover {
   color: #c89d56;
+}
+.header {
+  /* ---------- Botón hamburguesa ---------- */
+}
+.header__toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  width: 42px;
+  height: 42px;
+  padding: 0;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  z-index: 1100;
+  -webkit-tap-highlight-color: transparent;
+}
+.header__toggle-bar {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background-color: #0d131f;
+  border-radius: 2px;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  transform-origin: center;
+}
+.header__toggle {
+  /* Estado activo → cruz */
+}
+.header__toggle.is-active .header__toggle-bar:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+  background-color: #c89d56;
+}
+.header__toggle.is-active .header__toggle-bar:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0);
+}
+.header__toggle.is-active .header__toggle-bar:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+  background-color: #c89d56;
 }
 
 /* ---------- 4.2 Footer ---------- */
@@ -729,10 +771,73 @@ a {
   }
   .header__inner {
     height: auto;
-    padding: 0.5rem 1.5rem;
+    padding: 0.65rem 1.25rem;
+  }
+  .header {
+    /* Mostrar hamburguesa */
+  }
+  .header__toggle {
+    display: flex;
+  }
+  .header {
+    /* Panel de navegación a pantalla completa */
   }
   .header__nav {
-    display: none;
+    position: fixed;
+    inset: 0;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1.75rem;
+    padding: 6rem 2rem 3rem;
+    background: #ffffff;
+    transform: translateY(-100%);
+    opacity: 0;
+    visibility: hidden;
+    z-index: 999;
+    transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease, visibility 0.3s ease;
+  }
+  .header__nav.is-open {
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+    height: min-content;
+  }
+  .header__nav {
+    /* Enlaces más grandes y táctiles */
+  }
+  .header__nav a:not(.btn) {
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: #0d131f;
+    padding: 0.5rem 1rem;
+    position: relative;
+  }
+  .header__nav a:not(.btn)::after {
+    content: "";
+    position: absolute;
+    bottom: 4px;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: #c89d56;
+    transform: translateX(-50%);
+    transition: width 0.3s ease;
+  }
+  .header__nav a:not(.btn):hover::after, .header__nav a:not(.btn):focus-visible::after {
+    width: 40%;
+  }
+  .header__nav {
+    /* Botón CTA dentro del menú */
+  }
+  .header__nav .btn--header {
+    margin-top: 0.5rem;
+    padding: 0.9rem 2.25rem;
+    font-size: 1rem;
+    background-color: #c89d56;
+  }
+  .header__nav .btn--header:hover {
+    background-color: #b08642;
   }
   .hero__badge {
     display: none;
@@ -743,7 +848,8 @@ a {
   .no-editables {
     padding: 0 0 4rem;
   }
-  .servicio-card, .ventaja-card {
+  .servicio-card,
+  .ventaja-card {
     padding: 1.75rem 1.5rem;
   }
   .servicio-card__title {
@@ -764,7 +870,10 @@ a {
     font-size: 1.5rem;
     line-height: 2rem;
   }
-  .contacto, .ventajas, .servicios, .disponibilidad {
+  .contacto,
+  .ventajas,
+  .servicios,
+  .disponibilidad {
     padding: 2rem 0;
   }
   .contacto__datos {
