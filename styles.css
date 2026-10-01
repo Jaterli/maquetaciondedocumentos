@@ -161,10 +161,6 @@ a {
 .btn--whatsapp:hover {
   background-color: #1ebc57;
 }
-.btn--lg {
-  padding: 1rem 2.5rem;
-  font-size: 1.05rem;
-}
 .btn--disponibilidad {
   background-color: #0d131f;
   color: #ffffff;
@@ -220,7 +216,7 @@ a {
 }
 .header__logo-icon {
   width: 50px;
-  border-radius: 8px;
+  border-radius: 100%;
   overflow: hidden;
 }
 .header__logo-icon img {
@@ -359,6 +355,19 @@ a {
   font-size: 1.2rem;
   font-weight: 600;
   color: #0d131f;
+  margin-bottom: 1rem;
+}
+.servicio-card__subtitle {
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #c89d56;
+  margin-bottom: 0.4rem;
+}
+.servicio-card__text {
+  font-size: 0.9rem;
+  color: #334155;
   margin-bottom: 1rem;
 }
 .servicio-card__lista {
@@ -550,6 +559,28 @@ a {
   border: 1px solid rgba(200, 157, 86, 0.25);
 }
 
+/* ---------- 5.3b Experiencia ---------- */
+.experiencia {
+  background-color: #f9fafb;
+}
+.experiencia__lista {
+  list-style: none;
+}
+.experiencia__lista li {
+  position: relative;
+  padding-left: 1.5rem;
+  margin-bottom: 0.6rem;
+  font-size: 0.925rem;
+  color: #334155;
+}
+.experiencia__lista li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: #c89d56;
+  font-weight: 700;
+}
+
 /* ---------- 5.4 No Editables & OCR ---------- */
 .no-editables {
   padding: 0 0 6rem;
@@ -693,11 +724,17 @@ a {
 }
 /* --- ≤ 768px --- */
 @media (max-width: 768px) {
+  .container {
+    padding: 0 1rem;
+  }
   .header__inner {
     height: auto;
     padding: 0.5rem 1.5rem;
   }
   .header__nav {
+    display: none;
+  }
+  .hero__badge {
     display: none;
   }
   .layout-detail {
@@ -709,16 +746,32 @@ a {
   .servicio-card, .ventaja-card {
     padding: 1.75rem 1.5rem;
   }
+  .servicio-card__title {
+    font-size: 1.1rem;
+    line-height: 1.5rem;
+  }
+  .section__title {
+    font-size: 2.2rem;
+    line-height: 2.4rem;
+  }
   .no-editables__banner {
     padding: 2.5rem 1.5rem;
   }
   .no-editables__note {
     padding: 1rem;
   }
+  .no-editables__subtitle {
+    font-size: 1.5rem;
+    line-height: 2rem;
+  }
   .contacto, .ventajas, .servicios, .disponibilidad {
-    padding: 4rem 0;
+    padding: 2rem 0;
   }
   .contacto__datos {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .footer__inner {
     flex-direction: column;
     gap: 1rem;
   }

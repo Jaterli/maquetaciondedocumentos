@@ -198,11 +198,6 @@ a {
         }
     }
 
-    &--lg {
-        padding: 1rem 2.5rem;
-        font-size: 1.05rem;
-    }
-
     &--disponibilidad {
         background-color: $color-primary;
         color: #ffffff;
@@ -266,7 +261,7 @@ a {
 
     &__logo-icon {
         width: 50px;
-        border-radius: 8px;
+        border-radius: 100%;
         overflow: hidden;
 
         img {
@@ -425,6 +420,21 @@ a {
         font-size: 1.2rem;
         font-weight: 600;
         color: $color-primary;
+        margin-bottom: 1rem;
+    }
+
+    &__subtitle {
+        font-size: 0.8rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: $color-accent;
+        margin-bottom: 0.4rem;
+    }
+
+    &__text {
+        font-size: 0.9rem;
+        color: $color-text-body;
         margin-bottom: 1rem;
     }
 
@@ -643,6 +653,32 @@ a {
     }
 }
 
+
+/* ---------- 5.3b Experiencia ---------- */
+.experiencia {
+    background-color: $color-bg-light;
+
+    &__lista {
+        list-style: none;
+
+        li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 0.6rem;
+            font-size: 0.925rem;
+            color: $color-text-body;
+
+            &::before {
+                content: "✓";
+                position: absolute;
+                left: 0;
+                color: $color-accent;
+                font-weight: 700;
+            }
+        }
+    }
+}
+
 /* ---------- 5.4 No Editables & OCR ---------- */
 .no-editables {
     padding: 0 0 6rem;
@@ -813,6 +849,11 @@ a {
 
 /* --- ≤ 768px --- */
 @media (max-width: 768px) {
+
+    .container {
+        padding: 0 1rem;
+    }
+
     .header {
         &__inner {
             height: auto;
@@ -823,6 +864,11 @@ a {
             display: none; // Se recomienda menú desplegable en producción
         }
     }
+
+    .hero__badge {
+        display: none;
+    }
+
     .layout-detail{
         padding: 4rem 0;
     }
@@ -833,6 +879,17 @@ a {
     .servicio-card, .ventaja-card {
         padding: 1.75rem 1.5rem;
     }
+
+    .servicio-card__title {
+        font-size: 1.1rem;
+         line-height: 1.5rem;
+    }
+
+    .section__title {
+        font-size: 2.2rem;
+        line-height: 2.4rem;
+    }
+
     .no-editables__banner {
         padding: 2.5rem 1.5rem;
     }
@@ -841,11 +898,21 @@ a {
         padding: 1rem;
     }
 
+    .no-editables__subtitle {
+        font-size: 1.5rem;
+        line-height: 2rem;
+    }
+
     .contacto, .ventajas, .servicios, .disponibilidad {
-        padding: 4rem 0;
+        padding: 2rem 0;
     }
 
     .contacto__datos {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .footer__inner {
         flex-direction: column;
         gap: 1rem;
     }
