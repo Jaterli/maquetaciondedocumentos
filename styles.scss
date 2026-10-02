@@ -459,13 +459,12 @@ a {
     &__nav {
         display: flex;
         flex-wrap: wrap;
-        gap: 0.5rem 1.25rem;
+        gap: 0.5rem 1.35rem;
         justify-content: flex-end;
         align-items: center;
 
         a {
             position: relative;
-            font-size: 0.85rem;
             color: rgba(255, 255, 255, 0.65);
             text-decoration: none;
             transition: color 0.2s ease;
