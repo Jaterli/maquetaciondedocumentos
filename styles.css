@@ -3,28 +3,103 @@
    styles.scss — Estética Editorial y Maquetación Profesional
    ============================================================
    ÍNDICE
-   01. Variables
-   02. Reset & Base
-   03. Utilidades (contenedor, tags, títulos, botones)
-   04. Componentes
-       4.1 Header
-       4.2 Footer
-       4.3 Cards (ventaja, servicio, experience-badge, software-pills)
-   05. Secciones
-       5.1 Hero
-       5.2 Disponibilidad
-       5.3 Layout Detail
-       5.4 No Editables & OCR
-       5.5 Ventajas
-       5.6 Servicios
-       5.7 Contacto
-   06. Responsive (global)
+   01. Fuentes auto-alojadas
+   02. Variables
+   03. Reset & Base
+   04. Utilidades
+       4.1 Contenedor
+       4.2 Etiquetas y titulares
+   05. Componentes
+       5.1 Botones
+       5.2 Header
+       5.3 Footer
+       5.4 Cards (ventaja, servicio)
+       5.5 Badges y Pills (experience-badge, software-pills)
+   06. Secciones
+       6.1 Hero
+       6.2 Disponibilidad
+       6.3 Layout Detail
+       6.4 Experiencia
+       6.5 No Editables & OCR
+       6.6 Ventajas
+       6.7 Servicios
+       6.8 Contacto
+       6.9 Aviso legal
+   07. Responsive
    ============================================================ */
 /* ============================================================
-   01. VARIABLES
+   01. FUENTES AUTO-ALOJADAS
+   ============================================================ */
+/* --- Cormorant Garamond --- */
+@font-face {
+  font-family: "Cormorant Garamond";
+  src: url("fonts/CormorantGaramond-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Cormorant Garamond";
+  src: url("fonts/CormorantGaramond-SemiBold.ttf") format("truetype");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Cormorant Garamond";
+  src: url("fonts/CormorantGaramond-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Cormorant Garamond";
+  src: url("fonts/CormorantGaramond-Italic.ttf") format("truetype");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+/* --- Inter --- */
+@font-face {
+  font-family: "Inter";
+  src: url("fonts/Inter-Light.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Inter";
+  src: url("fonts/Inter-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Inter";
+  src: url("fonts/Inter-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Inter";
+  src: url("fonts/Inter-SemiBold.ttf") format("truetype");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Inter";
+  src: url("fonts/Inter-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+/* ============================================================
+   02. VARIABLES
    ============================================================ */
 /* ============================================================
-   02. RESET & BASE
+   03. RESET & BASE
    ============================================================ */
 *, *::before, *::after {
   margin: 0;
@@ -58,15 +133,16 @@ a {
 }
 
 /* ============================================================
-   03. UTILIDADES
+   04. UTILIDADES
    ============================================================ */
+/* ---------- 4.1 Contenedor ---------- */
 .container {
   max-width: 1180px;
   margin: 0 auto;
   padding: 0 1.5rem;
 }
 
-/* --- Etiquetas y titulares elegantes --- */
+/* ---------- 4.2 Etiquetas y titulares ---------- */
 .section__tag {
   display: inline-block;
   font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
@@ -110,7 +186,10 @@ a {
   margin-bottom: 3rem;
 }
 
-/* --- Botones refinados --- */
+/* ============================================================
+   05. COMPONENTES
+   ============================================================ */
+/* ---------- 5.1 Botones ---------- */
 .btn {
   display: inline-flex;
   align-items: center;
@@ -173,10 +252,7 @@ a {
   color: #ffffff;
 }
 
-/* ============================================================
-   04. COMPONENTES
-   ============================================================ */
-/* ---------- 4.1 Header ---------- */
+/* ---------- 5.2 Header ---------- */
 .header {
   position: sticky;
   top: 0;
@@ -238,7 +314,7 @@ a {
   color: #c89d56;
 }
 .header {
-  /* ---------- Botón hamburguesa ---------- */
+  /* Botón hamburguesa */
 }
 .header__toggle {
   display: none;
@@ -280,34 +356,171 @@ a {
   background-color: #c89d56;
 }
 
-/* ---------- 4.2 Footer ---------- */
+/* ---------- 5.3 Footer ---------- */
 .footer {
   background-color: #080c14;
-  padding: 2rem 0;
+  padding: 2.5rem 0 1.5rem;
   color: rgba(255, 255, 255, 0.5);
   font-size: 0.875rem;
 }
 .footer__inner {
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 1.5rem 3rem;
   align-items: center;
+}
+.footer__brand {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+.footer__name {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: #ffffff;
+  letter-spacing: 0.01em;
+  line-height: 1.2;
+}
+.footer__tagline {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: #c89d56;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+.footer__nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.25rem;
+  justify-content: flex-end;
+  align-items: center;
+}
+.footer__nav a {
+  position: relative;
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.65);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+.footer__nav a:hover {
+  color: #c89d56;
+}
+.footer__nav a {
+  /* Separador vertical fino entre enlaces */
+}
+.footer__nav a:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  right: -0.65rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1px;
+  height: 12px;
+  background: rgba(255, 255, 255, 0.15);
+}
+.footer__credit {
+  grid-column: 1/-1;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  text-align: center;
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.45);
+  margin: 0;
 }
 .footer__link {
   color: #c89d56;
+  text-decoration: none;
 }
 .footer__link:hover {
   color: #b08642;
-}
-.footer a {
-  color: inherit;
   text-decoration: underline;
-  transition: color 0.2s ease;
-}
-.footer a:hover {
-  color: #ffffff;
 }
 
-/* ---------- 4.3 Cards y componentes reutilizables ---------- */
+/* ---------- 5.4 Cards ---------- */
+/* Ventaja card */
+.ventaja-card {
+  background: #ffffff;
+  padding: 2.25rem;
+  border-radius: 10px;
+  border: 1px solid #e2e8f0;
+  transition: all 0.3s ease;
+}
+.ventaja-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.05);
+  border-color: #c89d56;
+}
+.ventaja-card--wide {
+  grid-column: span 2;
+}
+.ventaja-card__num {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #c89d56;
+  margin-bottom: 0.5rem;
+}
+.ventaja-card__title {
+  font-size: 1.2rem;
+  line-height: 1.8rem;
+  font-weight: 600;
+  color: #0d131f;
+  margin-bottom: 0.5rem;
+}
+.ventaja-card__text {
+  color: #334155;
+}
+
+/* Servicio card */
+.servicio-card {
+  background: #ffffff;
+  padding: 2.25rem 1.75rem;
+  border-radius: 10px;
+  border: 1px solid #e2e8f0;
+}
+.servicio-card__icon {
+  font-size: 2.2rem;
+  margin-bottom: 1rem;
+}
+.servicio-card__title {
+  font-size: 1.2rem;
+  line-height: 1.8rem;
+  font-weight: 600;
+  color: #0d131f;
+  margin-bottom: 1rem;
+}
+.servicio-card__subtitle {
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #c89d56;
+  margin-bottom: 0.4rem;
+}
+.servicio-card__text {
+  color: #334155;
+  margin-bottom: 1rem;
+}
+.servicio-card__lista {
+  list-style: none;
+}
+.servicio-card__lista li {
+  font-size: 0.95rem;
+  color: #334155;
+  margin-bottom: 0.6rem;
+  padding-left: 1.2rem;
+  position: relative;
+}
+.servicio-card__lista li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: #c89d56;
+  font-weight: bold;
+}
+
+/* ---------- 5.5 Badges y Pills ---------- */
 /* Experience badge */
 .experience-badge {
   text-align: center;
@@ -348,92 +561,10 @@ a {
   border: 1px solid rgba(0, 0, 0, 0.06);
 }
 
-/* Ventaja card */
-.ventaja-card {
-  background: #ffffff;
-  padding: 2.25rem;
-  border-radius: 10px;
-  border: 1px solid #e2e8f0;
-  transition: all 0.3s ease;
-}
-.ventaja-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.05);
-  border-color: #c89d56;
-}
-.ventaja-card--wide {
-  grid-column: span 2;
-}
-.ventaja-card__num {
-  font-family: "Cormorant Garamond", Georgia, serif;
-  font-size: 1.8rem;
-  font-weight: 700;
-  color: #c89d56;
-  margin-bottom: 0.5rem;
-}
-.ventaja-card__title {
-  font-size: 1.2rem;
-  font-weight: 600;
-  color: #0d131f;
-  margin-bottom: 0.5rem;
-}
-.ventaja-card__text {
-  font-size: 0.95rem;
-  color: #334155;
-}
-
-/* Servicio card */
-.servicio-card {
-  background: #ffffff;
-  padding: 2.25rem 1.75rem;
-  border-radius: 10px;
-  border: 1px solid #e2e8f0;
-}
-.servicio-card__icon {
-  font-size: 2.2rem;
-  margin-bottom: 1rem;
-}
-.servicio-card__title {
-  font-size: 1.2rem;
-  font-weight: 600;
-  color: #0d131f;
-  margin-bottom: 1rem;
-}
-.servicio-card__subtitle {
-  font-size: 0.8rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: #c89d56;
-  margin-bottom: 0.4rem;
-}
-.servicio-card__text {
-  font-size: 0.9rem;
-  color: #334155;
-  margin-bottom: 1rem;
-}
-.servicio-card__lista {
-  list-style: none;
-}
-.servicio-card__lista li {
-  font-size: 0.9rem;
-  color: #334155;
-  margin-bottom: 0.6rem;
-  padding-left: 1.2rem;
-  position: relative;
-}
-.servicio-card__lista li::before {
-  content: "•";
-  position: absolute;
-  left: 0;
-  color: #c89d56;
-  font-weight: bold;
-}
-
 /* ============================================================
-   05. SECCIONES
+   06. SECCIONES
    ============================================================ */
-/* ---------- 5.1 Hero ---------- */
+/* ---------- 6.1 Hero ---------- */
 .hero {
   padding: 5rem 0 5.5rem;
   background: linear-gradient(135deg, #0d131f 0%, #172033 100%);
@@ -504,7 +635,7 @@ a {
   object-fit: cover;
 }
 
-/* ---------- 5.2 Disponibilidad ---------- */
+/* ---------- 6.2 Disponibilidad ---------- */
 .disponibilidad {
   padding: 2rem 0;
   margin-top: -2.5rem;
@@ -561,7 +692,6 @@ a {
   line-height: 1.25;
 }
 .disponibilidad__text {
-  font-size: 0.95rem;
   color: #334155;
   line-height: 1.55;
   margin: 0;
@@ -572,7 +702,7 @@ a {
   justify-content: flex-end;
 }
 
-/* ---------- 5.3 Layout Detail ---------- */
+/* ---------- 6.3 Layout Detail ---------- */
 .layout-detail {
   padding: 6rem 0;
 }
@@ -601,7 +731,7 @@ a {
   border: 1px solid rgba(200, 157, 86, 0.25);
 }
 
-/* ---------- 5.3b Experiencia ---------- */
+/* ---------- 6.4 Experiencia ---------- */
 .experiencia {
   background-color: #f9fafb;
 }
@@ -623,7 +753,7 @@ a {
   font-weight: 700;
 }
 
-/* ---------- 5.4 No Editables & OCR ---------- */
+/* ---------- 6.5 No Editables & OCR ---------- */
 .no-editables {
   padding: 6rem 0;
 }
@@ -663,7 +793,7 @@ a {
   margin: 0;
 }
 
-/* ---------- 5.5 Ventajas ---------- */
+/* ---------- 6.6 Ventajas ---------- */
 .ventajas {
   background-color: #f9fafb;
   padding: 6rem 0;
@@ -674,7 +804,7 @@ a {
   gap: 2rem;
 }
 
-/* ---------- 5.6 Servicios ---------- */
+/* ---------- 6.7 Servicios ---------- */
 .servicios {
   padding: 6rem 0;
 }
@@ -684,7 +814,7 @@ a {
   gap: 2rem;
 }
 
-/* ---------- 5.7 Contacto ---------- */
+/* ---------- 6.8 Contacto ---------- */
 .contacto {
   background: linear-gradient(135deg, #0d131f 0%, #172033 100%);
   color: #ffffff;
@@ -717,8 +847,46 @@ a {
   color: #c89d56;
 }
 
+/* ---------- 6.9 Aviso legal ---------- */
+.legal-page {
+  padding: 4rem 0;
+  color: #334155;
+  line-height: 1.7;
+}
+.legal-page h1 {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 2.5rem;
+  color: #0d131f;
+  margin-bottom: 0.5rem;
+}
+.legal-page h2 {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 1.75rem;
+  color: #0d131f;
+  line-height: 2rem;
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+  border-bottom: 1px solid rgba(200, 157, 86, 0.3);
+  padding-bottom: 0.25rem;
+}
+.legal-page p, .legal-page ul {
+  margin-bottom: 1rem;
+  font-size: 0.95rem;
+}
+.legal-page ul {
+  padding-left: 1.25rem;
+}
+.legal-page li {
+  margin-bottom: 0.4rem;
+}
+.legal-page .legal-date {
+  font-size: 0.85rem;
+  color: #64748b;
+  margin-bottom: 2rem;
+}
+
 /* ============================================================
-   06. RESPONSIVE
+   07. RESPONSIVE
    ============================================================ */
 /* --- ≤ 992px --- */
 @media (max-width: 992px) {
@@ -842,13 +1010,12 @@ a {
   .hero__badge {
     display: none;
   }
+  .legal-page {
+    padding: 2rem 0;
+  }
   .servicio-card,
   .ventaja-card {
     padding: 1.75rem 1.5rem;
-  }
-  .servicio-card__title {
-    font-size: 1.1rem;
-    line-height: 1.5rem;
   }
   .section__title {
     font-size: 2.2rem;
@@ -876,8 +1043,21 @@ a {
     flex-direction: column;
     gap: 1rem;
   }
+  .experiencia__lista li {
+    font-size: 1rem;
+  }
   .footer__inner {
-    flex-direction: column;
-    gap: 1rem;
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+  .footer__nav {
+    justify-content: flex-start;
+    gap: 0.5rem 1rem;
+  }
+  .footer__nav a:not(:last-child)::after {
+    display: none; /* quitamos separadores en móvil para que respire */
+  }
+  .footer__credit {
+    text-align: left;
   }
 }/*# sourceMappingURL=styles.css.map */
